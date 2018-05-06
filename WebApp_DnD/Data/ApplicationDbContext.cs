@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebApp_DnD.Models;
+using WebApp_DnD.Models.DnD;
 
 namespace WebApp_DnD.Data
 {
@@ -15,12 +16,12 @@ namespace WebApp_DnD.Data
         {
         }
 
+        public DbSet<Die> Dice { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            builder.Entity<Die>().ToTable("Die");
         }
     }
 }
