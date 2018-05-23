@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebApp_DnD.Models;
-using WebApp_DnD.Models.DnD;
 
 namespace WebApp_DnD.Data
 {
@@ -17,11 +16,15 @@ namespace WebApp_DnD.Data
         }
 
         public DbSet<Die> Dice { get; set; }
+        public DbSet<CharacterRace> CharacterRaces { get; set; }
+        public DbSet<CharacterClass> CharacterClasses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.Entity<Die>().ToTable("Die");
+            builder.Entity<CharacterRace>().ToTable("CharacterRace");
+            builder.Entity<CharacterClass>().ToTable("CharacterClass");
         }
     }
 }

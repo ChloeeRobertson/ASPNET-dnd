@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp_DnD.Data;
-using WebApp_DnD.Models.DnD;
+using WebApp_DnD.Models;
 
 namespace WebApp_DnD.Controllers
 {
