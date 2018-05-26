@@ -18,6 +18,7 @@ namespace WebApp_DnD.Data
         public DbSet<Die> Dice { get; set; }
         public DbSet<CharacterRace> CharacterRaces { get; set; }
         public DbSet<CharacterClass> CharacterClasses { get; set; }
+        public DbSet<Alignment> Alignments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,6 +26,7 @@ namespace WebApp_DnD.Data
             builder.Entity<Die>().ToTable("Die");
             builder.Entity<CharacterRace>().ToTable("CharacterRace");
             builder.Entity<CharacterClass>().ToTable("CharacterClass");
+            builder.Entity<Alignment>().ToTable("Alignment");
         }
     }
 }

@@ -3,6 +3,10 @@
     padding-bottom: 20px;
 }
 
+body, html {
+    height: 100%;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -32,4 +36,25 @@
     .carousel-caption {
         display: none;
     }
+}
+
+
+.jumbotron {
+    margin-top: 20px;
+    background-image: url("../images/d20.jpg");
+    background-size: cover;
+}
+
+
+.first {
+    padding-top: 140px;
+    height: 100vh;
+    min-height: 400px;
+    background-size: cover;
+    background-image: url('../images/sebastien-421140-unsplash.jpg');
+}
+
+section {
+    height: calc(90% - 50px);
+    height: 90vh;
 }

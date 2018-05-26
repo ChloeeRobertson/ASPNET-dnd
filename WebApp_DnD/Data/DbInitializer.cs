@@ -64,6 +64,24 @@ namespace WebApp_DnD.Data
                 context.CharacterClasses.AddRange(classes);
                 context.SaveChanges();
             }
+
+
+            if (!context.Alignments.Any()) {
+                List<Alignment> alignments = new List<Alignment>() {
+                    new Alignment {AlignmentCode = "LG", Name="Lawful Good", Description="creatures can be counted on to do the right thing as expected by society. Gold dragons, paladins, and most dwarves are lawful good."},
+                    new Alignment {AlignmentCode = "LN", Name="Lawful Neutral", Description="individuals act in accordance with law, tradition, or personal codes. Many monks and some wizards are lawful neutral."},
+                    new Alignment {AlignmentCode = "LE", Name="Lawful Evil", Description="creatures methodically take what they want, within the limits of a code of tradition, loyalty, or order. Devils, blue dragons, and hobgoblins are Lawful evil."},
+                    new Alignment {AlignmentCode = "NG", Name="Neutral Good", Description="folk do the best they can to help others according to their needs. Many celestials, some cloud giants, and most gnomes are neutral good."},
+                    new Alignment {AlignmentCode = "N", Name="Neutral", Description="is the alignment of those who prefer to steer clear of moral questions and don't take sides, doing what seems best at the time. Lizardfolk, most druids, and many humans are neutral."},
+                    new Alignment {AlignmentCode = "NE", Name="Neutral Evil", Description="is the alignment of those who do whatever they can get away with, without compassion or qualms. Many drow, some cloud giants, and yugoloths are neutraI evil."},
+                    new Alignment {AlignmentCode = "CG", Name="Chaotic Good", Description="creatures act as their conscience directs, with little regard for what others expect. Copper dragons, many elves, and unicorns are chaotic good."},
+                    new Alignment {AlignmentCode = "CN", Name="Chaotic Neutral", Description="creatures follow their whims, holding their personal freedom above all else. Many barbarians and rogues, and some bards, are chaotic neutral."},
+                    new Alignment {AlignmentCode = "CE", Name="Chaotic Evil", Description="creatures act with arbitrary violence, spurred by their greed, hatred, or bloodlust. Demons, red dragons, and orcs are chaotic evil."},
+                };
+
+                context.Alignments.AddRange(alignments);
+                context.SaveChanges();
+            }
         }
     }
 }
