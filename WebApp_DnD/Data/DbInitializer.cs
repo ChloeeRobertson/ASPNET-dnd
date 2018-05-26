@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace WebApp_DnD.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(ApplicationDbContext context) {
+        public static async Task InitializeAsync(ApplicationDbContext context, UserManager<ApplicationUser> userManager) {
 
             context.Database.EnsureCreated();
 
@@ -81,6 +82,21 @@ namespace WebApp_DnD.Data
 
                 context.Alignments.AddRange(alignments);
                 context.SaveChanges();
+            }
+
+
+            //Users
+            string password = "P@$$w0rd";
+
+            if (await userManager.FindByNameAsync("c@c.c") == null) {
+                var user = new ApplicationUser {
+                    UserName = "c@c.c",
+                    Email = "c@c.c"
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                }
             }
         }
     }

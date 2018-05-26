@@ -19,6 +19,8 @@ namespace WebApp_DnD.Data
         public DbSet<CharacterRace> CharacterRaces { get; set; }
         public DbSet<CharacterClass> CharacterClasses { get; set; }
         public DbSet<Alignment> Alignments { get; set; }
+        public DbSet<Character> Characters { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +29,8 @@ namespace WebApp_DnD.Data
             builder.Entity<CharacterRace>().ToTable("CharacterRace");
             builder.Entity<CharacterClass>().ToTable("CharacterClass");
             builder.Entity<Alignment>().ToTable("Alignment");
+
+            builder.Entity<Character>().ToTable("Characters").HasKey(c => new {c.User, c.Name });
         }
     }
 }

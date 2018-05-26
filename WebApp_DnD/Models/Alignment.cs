@@ -12,5 +12,7 @@ namespace WebApp_DnD.Models
         public string AlignmentCode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public ICollection<Character> Characters { get; set; }
     }
 }
