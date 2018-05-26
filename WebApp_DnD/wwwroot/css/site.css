@@ -1,10 +1,11 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 75px;
     padding-bottom: 20px;
 }
 
 body, html {
     height: 100%;
+    width: 100%;
 }
 
 /* Wrapping element */
@@ -14,29 +15,6 @@ body, html {
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
-}
 
 
 .jumbotron {
@@ -52,9 +30,39 @@ body, html {
     min-height: 400px;
     background-size: cover;
     background-image: url('../images/sebastien-421140-unsplash.jpg');
+    width: 100%
+}
+
+.affix {
+    -webkit-transition: padding 0.2s ease-out;
+    -moz-transition: padding 0.2s ease-out;
+    -o-transition: padding 0.2s ease-out;
+    transition: padding 0.2s ease-out;
+}
+
+.affix-top {
+    /* navbar style at top */
+    background: orange;
+    border-color: transparent;
+    padding: 15px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.affix-top .nav > li > a {
+        color: #000;
+}
+
+.affix-top .navbar-collapse {
+        border-color: transparent;
+        box-shadow: initial;
+
 }
 
 section {
     height: calc(90% - 50px);
     height: 90vh;
+    max-width: 100%
 }
