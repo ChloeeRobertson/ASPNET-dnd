@@ -27,12 +27,12 @@
         <span class="icon-bar"></span>
     </button>
 
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebApp_DnD</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                <img src="~/images/d20icon_black.png" style="height:130%"/></a>
 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Roll" asp-action="Index">Roll</a></li>
@@ -41,13 +41,13 @@
             </div>
         </div>
     </nav>
-    <!--<div class="container-fluid body-content">-->
-        @RenderBody()
+    @RenderBody()
+    <div class="container">
         <hr />
         <footer>
             <p>&copy; 2018 - WebApp_DnD</p>
         </footer>
-    <!--</div>-->
+    </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
