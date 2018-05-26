@@ -30,7 +30,7 @@ namespace WebApp_DnD.Data
             builder.Entity<CharacterClass>().ToTable("CharacterClass");
             builder.Entity<Alignment>().ToTable("Alignment");
 
-            builder.Entity<Character>().ToTable("Characters").HasKey(c => new {c.User, c.Name });
+            builder.Entity<Character>().ToTable("Characters").HasKey(c => new { c.Name, c.User});
         }
     }
 }

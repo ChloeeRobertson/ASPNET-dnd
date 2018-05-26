@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace WebApp_DnD.Models
         public string Race { get; set; }
         public string Alignment { get; set; }
 
-        [ForeignKey("user")]
+        [ForeignKey("User")]
         public ApplicationUser AppUser { get; set; }
 
         [ForeignKey("Class")]
