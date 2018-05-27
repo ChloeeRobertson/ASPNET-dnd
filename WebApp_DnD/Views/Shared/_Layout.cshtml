@@ -36,6 +36,9 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Roll" asp-action="Index">Roll</a></li>
+                    @if (User.Identity.IsAuthenticated) {
+                        <li><a asp-area="" asp-controller="Characters" asp-action="Index">Characters</a></li>
+                     }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

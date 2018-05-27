@@ -98,6 +98,20 @@ namespace WebApp_DnD.Data
                     await userManager.AddPasswordAsync(user, password);
                 }
             }
+
+            var chloee = await userManager.FindByEmailAsync("c@c.c");
+
+            if (!context.Characters.Any()) {
+                List<Character> characters = new List<Character>() {
+                    new Character{User= chloee.Id, Name="Lou-Lou", Class="Rogue", Race="Elf", Alignment="CG"},
+                    new Character{User= chloee.Id, Name="Taako", Class="Wizard", Race="Elf", Alignment="CG"},
+                    new Character{User= chloee.Id, Name="Magnus Burnsides", Class="Fighter", Race="Human", Alignment="LG"},
+                    new Character{User= chloee.Id, Name="Merle Highchurch", Class="Cleric", Race="Dwarf", Alignment="LG"},
+                };
+
+                context.Characters.AddRange(characters);
+                context.SaveChanges();
+            }
         }
     }
 }

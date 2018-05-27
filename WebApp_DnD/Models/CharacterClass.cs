@@ -17,6 +17,5 @@ namespace WebApp_DnD.Models
         [ForeignKey("HitDie")]
         public Die Die { get; set; }
 
-        public ICollection<Character> Characters { get; set; }
     }
 }
