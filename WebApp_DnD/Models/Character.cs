@@ -11,6 +11,7 @@ namespace WebApp_DnD.Models
     {
         public string User { get; set; }
         public string Name { get; set; }
+        public byte[] Picture { get; set; }
 
         public string Class { get; set; }
         public string Race { get; set; }

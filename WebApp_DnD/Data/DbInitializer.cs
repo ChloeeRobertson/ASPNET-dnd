@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp_DnD.Models;
+using System.Drawing;
 
 namespace WebApp_DnD.Data
 {
@@ -100,15 +102,16 @@ namespace WebApp_DnD.Data
             }
 
             var chloee = await userManager.FindByEmailAsync("c@c.c");
-
+            string path = Directory.GetCurrentDirectory();
+            Byte[] test = File.ReadAllBytes(path + "\\wwwroot\\images\\taako.jpg");
+            
             if (!context.Characters.Any()) {
                 List<Character> characters = new List<Character>() {
                     new Character{User= chloee.Id, Name="Lou-Lou", Class="Rogue", Race="Elf", Alignment="CG"},
-                    new Character{User= chloee.Id, Name="Taako", Class="Wizard", Race="Elf", Alignment="CG"},
-                    new Character{User= chloee.Id, Name="Magnus Burnsides", Class="Fighter", Race="Human", Alignment="LG"},
-                    new Character{User= chloee.Id, Name="Merle Highchurch", Class="Cleric", Race="Dwarf", Alignment="LG"},
+                    new Character{User= chloee.Id, Name="Taako", Class="Wizard", Race="Elf", Alignment="CG", Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\taako.jpg") },
+                    new Character{User= chloee.Id, Name="Magnus Burnsides", Class="Fighter", Race="Human", Alignment="LG", Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\magnus.jpg")},
+                    new Character{User= chloee.Id, Name="Merle Highchurch", Class="Cleric", Race="Dwarf", Alignment="LG", Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\merle.jpg")},
                 };
-
                 context.Characters.AddRange(characters);
                 context.SaveChanges();
             }

@@ -4,15 +4,60 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+
+    .card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        max-width: 300px;
+        border-radius: 5px; /* 5px rounded corners */
+    }
+
+        /* On mouse-over, add a deeper shadow */
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+        margin: 0 auto;
+    }
+
+    .card-text {
+        width: 100%;
+        text-align:center;
+    }
+    .card-text > p {
+        color: black;
+    }
+
+    .crop {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+
+    .crop img {
+        width: 200px;
+        margin: 0 0 0 0
+    }
+
+</style>
+
 <div class="container">
     <h2>Characters</h2>
 
     <p>
         <a asp-action="Create">Create New</a>
     </p>
-    <table class="table">
+    @*@<table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
@@ -31,6 +76,13 @@
         <tbody>
             @foreach (var item in Model) {
                 <tr onclick="location.href = '@(Url.Action("Details", "Characters", new { id = item.Name }))'">
+                    <th>
+                        @if (item.Picture != null) {
+                            <div class="crop">
+                                <img src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" />
+                            </div>
+                        }
+                    </th>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
@@ -51,7 +103,26 @@
                 </tr>
             }
         </tbody>
-    </table>
+    </table>*@
 
 
-</div>
+    @foreach (var item in Model) {
+    <div class="card" onclick="location.href = '@(Url.Action("Details", "Characters", new { id = item.Name }))'">
+        <div class="crop">
+            @if (item.Picture != null) {
+                <img src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" />
+             } else {
+                <img src="~/images/characterDefault.jpg" />
+             }
+        </div>
+            <div class="container card-text">
+                <h4><b>@Html.DisplayFor(modelItem => item.Name)</b></h4>
+                <p>@Html.DisplayFor(modelItem => item.CharClass.Name)</p>
+                <p>@Html.DisplayFor(modelItem => item.CharRace.Name)</p>
+                <p>@Html.DisplayFor(modelItem => item.CharAlign.Name)</p>
+                <p><button>Contact</button></p>
+            </div>
+        </div>
+    }
+
+    </div>
