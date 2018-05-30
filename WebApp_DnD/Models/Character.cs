@@ -16,6 +16,21 @@ namespace WebApp_DnD.Models
         public string Class { get; set; }
         public string Race { get; set; }
         public string Alignment { get; set; }
+        public int ExperiencePoints { get; set; }
+        public int Level { get; set; }
+
+        [Range(1,20)]
+        public int Strength { get; set; }
+        [Range(1, 20)]
+        public int Dexterity { get; set; }
+        [Range(1, 20)]
+        public int Consitution { get; set; }
+        [Range(1, 20)]
+        public int Intelligence { get; set; }
+        [Range(1, 20)]
+        public int Wisdom { get; set; }
+        [Range(1, 20)]
+        public int Charisma { get; set; }
 
         [ForeignKey("User")]
         public ApplicationUser AppUser { get; set; }

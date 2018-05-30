@@ -3,40 +3,172 @@
 @{
     ViewData["Title"] = "Details";
 }
+<head>
+    @*<link rel="stylesheet" href="~/css/characterPic.css" asp-append-version="true" />*@
+</head>
 
+<style>
+    .header-text {
+        min-height: 100%;
+        background-color: aqua;
+        display: table;
+    }
+    .header-text > .content {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 1.5em;
+    }
+    .content > .row{
+        margin-bottom: 20px;
+    }
+
+    .modifiers {
+        background-color: orange;
+        text-align: center;
+    }
+    .modifiers > .row {
+        margin: 0 auto;
+        width: 50%;
+        padding-top: 10px;
+    }
+    .modifiers > .row > .modifier-input {
+
+    }
+
+    .crop {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+
+        .crop img {
+            width: 200px;
+            margin: 0 0 0 0
+        }
+
+</style>
+
+<script language="JavaScript" type="text/javascript" src="~/vendor.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var dynamic = $('.photo ');
+        var static = $('.header-text');
+
+        static.height(dynamic.height());
+
+    });
+</script>
 <h2>Details</h2>
 
-<div>
-    <h4>Character</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AppUser)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AppUser.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CharAlign)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CharAlign.AlignmentCode)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CharClass)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CharClass.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CharRace)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CharRace.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+
+<div class="container">
+
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="User" />
+        <input type="hidden" asp-for="Name" />
+
+
+        <div class="row header">
+            <div class="col-sm-3">
+                <div class="crop photo">
+                    @if (Model.Picture != null) {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.Picture)" />
+} else {
+                <img src="~/images/characterDefault.jpg" />
+}
+                </div>
+            </div>
+            
+
+
+            <div class="col-sm-9 header-text">
+
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Class" class="control-label"></label>
+                            <select asp-for="Class" class="form-control" asp-items="ViewBag.Class"></select>
+                            <span asp-validation-for="Class" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label asp-for="Race" class="control-label"></label>
+                            <select asp-for="Race" class="form-control" asp-items="ViewBag.Race"></select>
+                            <span asp-validation-for="Race" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Alignment" class="control-label"></label>
+                            <select asp-for="Alignment" class="form-control" asp-items="ViewBag.Alignment"></select>
+                            <span asp-validation-for="Alignment" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="ExperiencePoints" class="control-label"></label>
+                            <input asp-for="ExperiencePoints" class="form-control" />
+                            <span asp-validation-for="ExperiencePoints" class="text-danger"></span>
+
+                            @* @Html.EditorFor(m => m.ExperiencePoints, new { htmlAttributes = new { @readonly = "readonly" } })*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Header-->
+        <div class="row">
+            <div class="modifiers col-sm-2">
+                <div class="row">
+                    <label asp-for="Strength" class="control-label"></label>
+                    <h1>@((Model.Strength - 10) / 2)</h1>
+                    <input asp-for="Strength" class="form-control modifier-input" />
+                    <span asp-validation-for="Strength" class="text-danger"></span>
+
+                </div>
+                <div class="row">
+                    <label asp-for="Dexterity" class="control-label"></label>
+                    <h1>@((Model.Dexterity - 10) / 2)</h1>
+                    <input asp-for="Dexterity" class="form-control modifier-input" />
+                    <span asp-validation-for="Dexterity" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <label asp-for="Consitution" class="control-label"></label>
+                    <h1>@((Model.Consitution - 10) / 2)</h1>
+                    <input asp-for="Consitution" class="form-control modifier-input" />
+                    <span asp-validation-for="Consitution" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <label asp-for="Intelligence" class="control-label"></label>
+                    <h1>@((Model.Intelligence - 10) / 2)</h1>
+                    <input asp-for="Intelligence" class="form-control modifier-input" />
+                    <span asp-validation-for="Intelligence" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <label asp-for="Wisdom" class="control-label"></label>
+                    <h1>@((Model.Wisdom - 10) / 2)</h1>
+                    <input asp-for="Wisdom" class="form-control modifier-input" />
+                    <span asp-validation-for="Wisdom" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <label asp-for="Charisma" class="control-label"></label>
+                    <h1>@((Model.Charisma - 10) / 2)</h1>
+                    <input asp-for="Charisma" class="form-control modifier-input" />
+                    <span asp-validation-for="Charisma" class="text-danger"></span>
+                </div>
+            </div>
+
+
+        </div>
+        
+
+    </form>
+
+        
 </div>

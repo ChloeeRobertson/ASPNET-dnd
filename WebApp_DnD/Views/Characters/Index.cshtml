@@ -4,7 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/characterPic.css" asp-append-version="true" />
+</head>
+
 <style>
+
 
     .wrapper {
         display: grid;
@@ -21,9 +26,9 @@
     }
 
         /* On mouse-over, add a deeper shadow */
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
 
     /* Add some padding inside the card container */
     .container {
@@ -33,25 +38,12 @@
 
     .card-text {
         width: 100%;
-        text-align:center;
-    }
-    .card-text > p {
-        color: black;
+        text-align: center;
     }
 
-    .crop {
-        width: 200px;
-        height: 200px;
-        overflow: hidden;
-        border-radius: 50%;
-        margin: 0 auto;
-    }
-
-    .crop img {
-        width: 200px;
-        margin: 0 0 0 0
-    }
-
+        .card-text > p {
+            color: black;
+        }
 </style>
 
 <div class="container">
@@ -64,24 +56,24 @@
 
     <div class="wrapper">
         @foreach (var item in Model) {
-        <div class="card" onclick="location.href = '@(Url.Action("Details", "Characters", new { id = item.Name }))'">
-            <div class="crop">
-                @if (item.Picture != null) {
-                <img src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" />
-        } else {
-            <img src="~/images/characterDefault.jpg" />
-    }
+            <div class="card" onclick="location.href = '@(Url.Action("Details", "Characters", new { id = item.Name }))'">
+                <div class="crop">
+                    @if (item.Picture != null) {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" />
+                    } else {
+                        <img src="~/images/characterDefault.jpg" />
+                    }
+                </div>
+                <div class="container card-text">
+                    <h4><b>@Html.DisplayFor(modelItem => item.Name)</b></h4>
+                    <p>@Html.DisplayFor(modelItem => item.CharClass.Name)</p>
+                    <p>@Html.DisplayFor(modelItem => item.CharRace.Name)</p>
+                    <p>@Html.DisplayFor(modelItem => item.CharAlign.Name)</p>
+                </div>
             </div>
-            <div class="container card-text">
-                <h4><b>@Html.DisplayFor(modelItem => item.Name)</b></h4>
-                <p>@Html.DisplayFor(modelItem => item.CharClass.Name)</p>
-                <p>@Html.DisplayFor(modelItem => item.CharRace.Name)</p>
-                <p>@Html.DisplayFor(modelItem => item.CharAlign.Name)</p>
-            </div>
-        </div>
-}
+        }
     </div>
 
 
 
-    </div>
+</div>

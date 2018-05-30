@@ -107,12 +107,33 @@ namespace WebApp_DnD.Data
             
             if (!context.Characters.Any()) {
                 List<Character> characters = new List<Character>() {
-                    new Character{User= chloee.Id, Name="Lou-Lou", Class="Rogue", Race="Elf", Alignment="CG"},
-                    new Character{User= chloee.Id, Name="Taako", Class="Wizard", Race="Elf", Alignment="CG", Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\taako.jpg") },
-                    new Character{User= chloee.Id, Name="Magnus Burnsides", Class="Fighter", Race="Human", Alignment="LG", Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\magnus.jpg")},
-                    new Character{User= chloee.Id, Name="Merle Highchurch", Class="Cleric", Race="Dwarf", Alignment="LG", Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\merle.jpg")},
+                    new Character{User= chloee.Id, Name="Lou-Lou", Class="Rogue", Race="Elf", Alignment="CG", ExperiencePoints = 100 , Level = 1,},
+                    new Character{User= chloee.Id, Name="Taako", Class="Wizard", Race="Elf", Alignment="CG", ExperiencePoints = 100 , Level = 1, Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\taako.jpg"), Strength = 10, Dexterity = 15, Consitution = 14, Intelligence = 16, Wisdom = 12, Charisma = 8},
+                    new Character{User= chloee.Id, Name="Magnus Burnsides", Class="Fighter", Race="Human", Alignment="LG", ExperiencePoints = 100 , Level = 1, Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\magnus.jpg"), Strength = 16, Dexterity = 14, Consitution = 15, Intelligence = 10, Wisdom = 8, Charisma = 12},
+                    new Character{User= chloee.Id, Name="Merle Highchurch", Class="Cleric", Race="Dwarf", Alignment="LG", ExperiencePoints = 100 , Level = 1, Picture =  File.ReadAllBytes(path + "\\wwwroot\\images\\merle.jpg")},
                 };
                 context.Characters.AddRange(characters);
+                context.SaveChanges();
+            }
+
+            if (!context.CharacterEquipment.Any()) {
+                List<CharacterEquipment> characterEquipments = new List<CharacterEquipment>() {
+                    new CharacterEquipment{User= chloee.Id, Name="Taako", ItemName="Umbra-Staff", Description="A Magical umbrella"},
+                    new CharacterEquipment{User= chloee.Id, Name="Taako", ItemName="Wand of Switcheroo", Description="When pointed at another creature of similar size within 100 feet and activated the holder will switch places with the target if it is willing. If the target is unwilling it must succeed a DC 17 Constitution saving throw to remain in place. Holds 3 charges, regains one charge after a long rest."},
+                    new CharacterEquipment{User= chloee.Id, Name="Taako", ItemName="Flaming Poisoning Raging Sword Of Doom", Description="It features a gigantic blade wreathed in flames with a crooked, oozing scorpion’s stinger affixed to its point. Deals an extra 20 melee damage."},
+                    new CharacterEquipment{User= chloee.Id, Name="Taako", ItemName="Stone of Farspeech", Description="Basically a fantasy walkie-talkie or, if you prefer, a fantasy smartphone."},
+
+                    new CharacterEquipment{User= chloee.Id, Name="Merle Highchurch", ItemName="Phone-a-Friend Scrybones", Description="The Scrybones enable the bearer to ask the Dungeon Master (Griffin) a yes-or-no question once per day."},
+                    new CharacterEquipment{User= chloee.Id, Name="Merle Highchurch", ItemName="Extreme Teen Bible", Description="The Extreme Teen Bible is a +1 holy symbol featuring a rad skateboarder on its cover. It allows the user to more easily spread the work of Pan to teens.."},
+                    new CharacterEquipment{User= chloee.Id, Name="Merle Highchurch", ItemName="Nitpicker", Description="The Nitpicker is a highly sarcastic, cantankerous humanoid resembling a garden gnome. Twice a day, it can be brought into the presence of a lock, wherein it becomes animated and picks the lock. While working, the Nitpicker criticizes the members of the party on their recent performance in the campaign."},
+                    new CharacterEquipment{User= chloee.Id, Name="Merle Highchurch", ItemName="Stone of Farspeech", Description="Basically a fantasy walkie-talkie or, if you prefer, a fantasy smartphone."},
+
+                    new CharacterEquipment{User= chloee.Id, Name="Magnus Burnsides", ItemName="Rail Splitter", Description="An ax offers +1 to attack and damage rolls, as well as the ability to fell any tree once per day."},
+                    new CharacterEquipment{User= chloee.Id, Name="Magnus Burnsides", ItemName="Stone of Farspeech", Description="Basically a fantasy walkie-talkie or, if you prefer, a fantasy smartphone."},
+                    new CharacterEquipment{User= chloee.Id, Name="Magnus Burnsides", ItemName="Lens of straight creepin'", Description="Allows the user to find footprints, tracks or markings of any person or thing that traveled through the area recently once per day."},
+                    new CharacterEquipment{User= chloee.Id, Name="Magnus Burnsides", ItemName="Gluttons Fork", Description="Once a day, this fork will allow the user to eat any non-magical item they can fit in their mouth and gain 2 d6 points of health. Just tap the fork on the item and it will turn edible."},
+                };
+                context.CharacterEquipment.AddRange(characterEquipments);
                 context.SaveChanges();
             }
         }

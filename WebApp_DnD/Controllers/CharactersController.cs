@@ -43,11 +43,16 @@ namespace WebApp_DnD.Controllers
                 .Include(c => c.CharClass)
                 .Include(c => c.CharRace)
                 .SingleOrDefaultAsync(m => m.Name == id);
+            //var Equipment = _context.CharacterEquipment.Where()
             if (character == null)
             {
                 return NotFound();
             }
 
+            ViewData["User"] = new SelectList(_context.Users, "Id", "Id", character.User);
+            ViewData["Alignment"] = new SelectList(_context.Alignments, "AlignmentCode", "AlignmentCode", character.Alignment);
+            ViewData["Class"] = new SelectList(_context.CharacterClasses, "Name", "Name", character.Class);
+            ViewData["Race"] = new SelectList(_context.CharacterRaces, "Name", "Name", character.Race);
             return View(character);
         }
 

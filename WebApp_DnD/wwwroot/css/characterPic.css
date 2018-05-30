@@ -1,0 +1,12 @@
+﻿.crop {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.crop img {
+    width: 200px;
+    margin: 0 0 0 0
+}
