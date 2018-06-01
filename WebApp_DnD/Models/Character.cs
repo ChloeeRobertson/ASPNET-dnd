@@ -43,5 +43,7 @@ namespace WebApp_DnD.Models
 
         [ForeignKey("Alignment")]
         public Alignment CharAlign { get; set; }
+
+        public IEnumerable<CharacterEquipment> Equipment { get; set; }
     }
 }

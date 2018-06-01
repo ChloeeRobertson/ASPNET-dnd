@@ -43,7 +43,8 @@ namespace WebApp_DnD.Controllers
                 .Include(c => c.CharClass)
                 .Include(c => c.CharRace)
                 .SingleOrDefaultAsync(m => m.Name == id);
-            //var Equipment = _context.CharacterEquipment.Where()
+            var Equipment = _context.CharacterEquipment.Where(r => r.Name == id).ToList();
+            ViewBag.Equipment = Equipment;
             if (character == null)
             {
                 return NotFound();
@@ -55,6 +56,11 @@ namespace WebApp_DnD.Controllers
             ViewData["Race"] = new SelectList(_context.CharacterRaces, "Name", "Name", character.Race);
             return View(character);
         }
+
+
+
+
+
 
         // GET: Characters/Create
         [Authorize]

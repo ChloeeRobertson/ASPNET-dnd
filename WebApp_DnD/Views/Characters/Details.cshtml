@@ -13,12 +13,14 @@
         background-color: aqua;
         display: table;
     }
-    .header-text > .content {
-        display: table-cell;
-        vertical-align: middle;
-        font-size: 1.5em;
-    }
-    .content > .row{
+
+        .header-text > .content {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.5em;
+        }
+
+    .content > .row {
         margin-bottom: 20px;
     }
 
@@ -26,14 +28,15 @@
         background-color: orange;
         text-align: center;
     }
-    .modifiers > .row {
-        margin: 0 auto;
-        width: 50%;
-        padding-top: 10px;
-    }
-    .modifiers > .row > .modifier-input {
 
-    }
+        .modifiers > .row {
+            margin: 0 auto;
+            width: 50%;
+            padding-top: 10px;
+        }
+
+            .modifiers > .row > .modifier-input {
+            }
 
     .crop {
         width: 200px;
@@ -48,6 +51,15 @@
             margin: 0 0 0 0
         }
 
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
 </style>
 
 <script language="JavaScript" type="text/javascript" src="~/vendor.min.js"></script>
@@ -76,13 +88,13 @@
             <div class="col-sm-3">
                 <div class="crop photo">
                     @if (Model.Picture != null) {
-                <img src="data:image;base64,@System.Convert.ToBase64String(Model.Picture)" />
-} else {
-                <img src="~/images/characterDefault.jpg" />
-}
+                        <img src="data:image;base64,@System.Convert.ToBase64String(Model.Picture)" />
+                    } else {
+                        <img src="~/images/characterDefault.jpg" />
+                    }
                 </div>
             </div>
-            
+
 
 
             <div class="col-sm-9 header-text">
@@ -166,9 +178,22 @@
 
 
         </div>
-        
+
 
     </form>
+    <div class="col-sm-5">
 
-        
+                <table id="equipmentTable">
+                    <tbody>
+                        @foreach (var item in Model.Equipment) {
+                        <tr>
+                            <td>@item.ItemName</td>
+                            <td>@item.Description</td>
+                        </tr>
+}
+                    </tbody>
+                </table>
+
+    </div>
+    
 </div>
