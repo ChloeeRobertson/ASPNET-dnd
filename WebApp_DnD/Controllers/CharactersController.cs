@@ -37,18 +37,24 @@ namespace WebApp_DnD.Controllers
                 return NotFound();
             }
 
+
             var character = await _context.Characters
                 .Include(c => c.AppUser)
                 .Include(c => c.CharAlign)
                 .Include(c => c.CharClass)
                 .Include(c => c.CharRace)
                 .SingleOrDefaultAsync(m => m.Name == id);
-            var Equipment = _context.CharacterEquipment.Where(r => r.Name == id).ToList();
-            ViewBag.Equipment = Equipment;
-            if (character == null)
-            {
+
+            if (character == null) {
                 return NotFound();
             }
+
+            var Equipment = _context.CharacterEquipment.Where(r => r.Name == id).ToList();
+            ViewBag.Equipment = Equipment;
+            var prof = _context.Proficiencies.Where(r => r.Name == id).ToList();
+            ViewBag.Proficiency = prof;
+
+
 
             ViewData["User"] = new SelectList(_context.Users, "Id", "Id", character.User);
             ViewData["Alignment"] = new SelectList(_context.Alignments, "AlignmentCode", "AlignmentCode", character.Alignment);

@@ -136,6 +136,21 @@ namespace WebApp_DnD.Data
                 context.CharacterEquipment.AddRange(characterEquipments);
                 context.SaveChanges();
             }
+
+            if (!context.Proficiencies.Any()) {
+                List<Proficiency> proficiency = new List<Proficiency>() {
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Daggers", },
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Darts", },
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Longbows", },
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Longswords", },
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Quartershaft", },
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Shortbows", },
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Shortswords", },
+                    new Proficiency{User= chloee.Id, Name="Taako", ProficiencyName="Sling", },
+                };
+                context.Proficiencies.AddRange(proficiency);
+                context.SaveChanges();
+            }
         }
     }
 }

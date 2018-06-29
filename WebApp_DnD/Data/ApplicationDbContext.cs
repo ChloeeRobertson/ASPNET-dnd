@@ -21,6 +21,7 @@ namespace WebApp_DnD.Data
         public DbSet<Alignment> Alignments { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<CharacterEquipment> CharacterEquipment { get; set; }
+        public DbSet<Proficiency> Proficiencies { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -33,6 +34,7 @@ namespace WebApp_DnD.Data
 
             builder.Entity<Character>().ToTable("Characters").HasKey(c => new { c.Name, c.User});
             builder.Entity<CharacterEquipment>().ToTable("CharacterEquipment").HasKey(c => new { c.Name, c.User, c.ItemName});
+            builder.Entity<Proficiency>().ToTable("Proficiency").HasKey(c => new { c.Name, c.User, c.ProficiencyName});
         }
     }
 }

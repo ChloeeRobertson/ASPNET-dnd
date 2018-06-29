@@ -45,5 +45,6 @@ namespace WebApp_DnD.Models
         public Alignment CharAlign { get; set; }
 
         public IEnumerable<CharacterEquipment> Equipment { get; set; }
+        public IEnumerable<Proficiency> Proficiency { get; set; }
     }
 }
