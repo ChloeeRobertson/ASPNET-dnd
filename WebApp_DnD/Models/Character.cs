@@ -44,6 +44,13 @@ namespace WebApp_DnD.Models
         [ForeignKey("Alignment")]
         public Alignment CharAlign { get; set; }
 
+
+        public int ArmorClass { get; set; }
+        public int Initiative { get; set; }
+        public int Speed { get; set; }
+        public int MaxHitPoints { get; set; }
+
+
         public IEnumerable<CharacterEquipment> Equipment { get; set; }
         public IEnumerable<Proficiency> Proficiency { get; set; }
     }
