@@ -89,7 +89,7 @@
 
 
         <div class="row header">
-            <div class="col-sm-3">
+            <div class="col-lg-3">
                 <div class="crop photo">
                     @if (Model.Picture != null) {
                         <img src="data:image;base64,@System.Convert.ToBase64String(Model.Picture)" />
@@ -101,7 +101,7 @@
 
 
 
-            <div class="col-sm-9 header-text">
+            <div class="col-lg-9 header-text">
 
                 <div class="content">
                     <div class="row">
@@ -140,7 +140,7 @@
         </div>
         <!--End of Header-->
         <div class="row">
-            <div class="modifiers col-sm-2">
+            <div class="modifiers col-lg-2">
                 <div class="row">
                     <label asp-for="Strength" class="control-label"></label>
                     <h1>@((Model.Strength - 10) / 2)</h1>
@@ -180,12 +180,40 @@
                 </div>
             </div>
 
+            <div class="col-lg-6">
+                <div class="row">
+                    <h4>@(Model.Inspiration) Inspiration</h4>
+                </div>
+                <div class="row">
+                    <h4>@(Model.ProficiencyBonus) Proficiency Bonus</h4>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h4>Armor Class</h4>
+                        <h1>@(Model.ArmorClass)</h1>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <h4>Initiative</h4>
+                        <h1>@(Model.Initiative)</h1>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <h4>Speed</h4>
+                        <h1>@(Model.Speed)</h1>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
 
     </form>
-    <div class="col-sm-3">
+    <div class="col-lg-3">
 
         <table id="ProfTable">
             <tbody>
@@ -198,7 +226,7 @@
         </table>
 
     </div>
-    <div class="col-sm-5">
+    <div class="col-lg-5">
 
         <table id="equipmentTable">
             <tbody>
