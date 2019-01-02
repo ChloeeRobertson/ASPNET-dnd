@@ -57,10 +57,25 @@
         padding: 8px;
     }
 
+    table.savingthows_skills {
+        margin: 0 auto;
+        width: 90%;
+        height: 100%;
+    }
+
     tr:nth-child(even) {
         background-color: #dddddd;
     }
 
+    .centercol {
+        background-color: yellow;
+        text-align: center;
+    }
+
+    .rightcol {
+        background-color: green;
+        text-align: center;
+    }
 
 
     
@@ -139,72 +154,188 @@
             </div>
         </div>
         <!--End of Header-->
+
         <div class="row">
-            <div class="modifiers col-lg-2">
-                <div class="row">
-                    <label asp-for="Strength" class="control-label"></label>
-                    <h1>@((Model.Strength - 10) / 2)</h1>
-                    <input asp-for="Strength" class="form-control modifier-input" />
-                    <span asp-validation-for="Strength" class="text-danger"></span>
+            <!--Modifier Column-->
+            <div class="col-lg-4 modifiers">
+                <div class=" col-lg-4 modifercol">
+                    <div class="row">
+                        <label asp-for="Strength" class="control-label"></label>
+                        <h1>@((Model.Strength - 10) / 2)</h1>
+                        <input asp-for="Strength" class="form-control modifier-input" />
+                        <span asp-validation-for="Strength" class="text-danger"></span>
 
+                    </div>
+                    <div class="row">
+                        <label asp-for="Dexterity" class="control-label"></label>
+                        <h1>@((Model.Dexterity - 10) / 2)</h1>
+                        <input asp-for="Dexterity" class="form-control modifier-input" />
+                        <span asp-validation-for="Dexterity" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <label asp-for="Consitution" class="control-label"></label>
+                        <h1>@((Model.Consitution - 10) / 2)</h1>
+                        <input asp-for="Consitution" class="form-control modifier-input" />
+                        <span asp-validation-for="Consitution" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <label asp-for="Intelligence" class="control-label"></label>
+                        <h1>@((Model.Intelligence - 10) / 2)</h1>
+                        <input asp-for="Intelligence" class="form-control modifier-input" />
+                        <span asp-validation-for="Intelligence" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <label asp-for="Wisdom" class="control-label"></label>
+                        <h1>@((Model.Wisdom - 10) / 2)</h1>
+                        <input asp-for="Wisdom" class="form-control modifier-input" />
+                        <span asp-validation-for="Wisdom" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <label asp-for="Charisma" class="control-label"></label>
+                        <h1>@((Model.Charisma - 10) / 2)</h1>
+                        <input asp-for="Charisma" class="form-control modifier-input" />
+                        <span asp-validation-for="Charisma" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="row">
-                    <label asp-for="Dexterity" class="control-label"></label>
-                    <h1>@((Model.Dexterity - 10) / 2)</h1>
-                    <input asp-for="Dexterity" class="form-control modifier-input" />
-                    <span asp-validation-for="Dexterity" class="text-danger"></span>
-                </div>
-                <div class="row">
-                    <label asp-for="Consitution" class="control-label"></label>
-                    <h1>@((Model.Consitution - 10) / 2)</h1>
-                    <input asp-for="Consitution" class="form-control modifier-input" />
-                    <span asp-validation-for="Consitution" class="text-danger"></span>
-                </div>
-                <div class="row">
-                    <label asp-for="Intelligence" class="control-label"></label>
-                    <h1>@((Model.Intelligence - 10) / 2)</h1>
-                    <input asp-for="Intelligence" class="form-control modifier-input" />
-                    <span asp-validation-for="Intelligence" class="text-danger"></span>
-                </div>
-                <div class="row">
-                    <label asp-for="Wisdom" class="control-label"></label>
-                    <h1>@((Model.Wisdom - 10) / 2)</h1>
-                    <input asp-for="Wisdom" class="form-control modifier-input" />
-                    <span asp-validation-for="Wisdom" class="text-danger"></span>
-                </div>
-                <div class="row">
-                    <label asp-for="Charisma" class="control-label"></label>
-                    <h1>@((Model.Charisma - 10) / 2)</h1>
-                    <input asp-for="Charisma" class="form-control modifier-input" />
-                    <span asp-validation-for="Charisma" class="text-danger"></span>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <h3>Saving Throws</h3>
+                        <table class="savingthows_skills">
+                            <tbody>
+                                <tr>
+                                    <td>@Model.ST_Strength</td>
+                                    <td>Strength</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.ST_Dexterity</td>
+                                    <td>Dexterity</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.ST_Consitution</td>
+                                    <td>Consitution</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.ST_Intelligence</td>
+                                    <td>Intelligence</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.ST_Wisdom</td>
+                                    <td>Wisdom</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.ST_Charisma</td>
+                                    <td>Charisma</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <h3>Skills</h3>
+                        <table class="savingthows_skills">
+                            <tbody>
+                                <tr>
+                                    <td>@Model.Acrobatics</td>
+                                    <td>Acrobatics</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.AnimalHandling</td>
+                                    <td>Animal Handling</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Arcana</td>
+                                    <td>Arcana</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Athletics</td>
+                                    <td>Athletics</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Deception</td>
+                                    <td>Deception</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.History</td>
+                                    <td>History</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Insight</td>
+                                    <td>Insight</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Intimidation</td>
+                                    <td>AIntimidation</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Medicine</td>
+                                    <td>Arcana</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Nature</td>
+                                    <td>Nature</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Perception</td>
+                                    <td>Perception</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Performance</td>
+                                    <td>Performance</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Persuasion</td>
+                                    <td>Persuasion</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Religion</td>
+                                    <td>Religion</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.SleightOfHand</td>
+                                    <td>Sleight Of Hand</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Stealth</td>
+                                    <td>Stealth</td>
+                                </tr>
+                                <tr>
+                                    <td>@Model.Survival</td>
+                                    <td>Survival</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <!--End of Modifer Column-->
 
-            <div class="col-lg-6">
-                <div class="row">
-                    <h4>@(Model.Inspiration) Inspiration</h4>
-                </div>
-                <div class="row">
-                    <h4>@(Model.ProficiencyBonus) Proficiency Bonus</h4>
-                </div>
-            </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-4 centercol">
+
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <h4>Armor Class</h4>
                         <h1>@(Model.ArmorClass)</h1>
                     </div>
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <h4>Initiative</h4>
                         <h1>@(Model.Initiative)</h1>
                     </div>
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <h4>Speed</h4>
                         <h1>@(Model.Speed)</h1>
                     </div>
+                </div>
+                <div class="row">
+
+                </div>
+
+            </div>
+            <div class="col-lg-4 rightcol">
+
+                <div class="row">
+                   <p>Right Column Area</p>
                 </div>
 
             </div>
@@ -226,7 +357,7 @@
         </table>
 
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-3">
 
         <table id="equipmentTable">
             <tbody>
@@ -242,3 +373,6 @@
     </div>
 
 </div>
+
+
+
